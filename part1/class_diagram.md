@@ -1,10 +1,11 @@
-# Business Logic Layer Detailed Class Diagram (HBnB)
+# Business Logic Layer  Detailed Class Diagram (HBnB)
 
-This document describes the detailed class diagram of the Business Logic layer of the HBnB application. It focuses on the main entities: User, Place, Review, and Amenity, including their attributes, methods, and relationships.
+This document describes the detailed class diagram of the Business Logic layer of the HBnB application. It focuses on the main entities: User, Place, Review, and Amenity
+including their attributes, methods, and relationships.
 
 ---
 
-## Detailed Class Diagram (Mermaid)
+## Detailed Class Diagram
 
 ```mermaid
 classDiagram
@@ -58,8 +59,8 @@ class Amenity {
   +delete_amenity()
 }
 
-%% ========== RELATIONSHIPS ==========
 User "1" --> "0..*" Place : owns
 User "1" --> "0..*" Review : writes
 Place "1" --> "0..*" Review : receives
 Place "0..*" -- "0..*" Amenity : has
+
