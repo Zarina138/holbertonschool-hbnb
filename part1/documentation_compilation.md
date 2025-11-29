@@ -54,6 +54,7 @@ class PersistenceLayer {
 PresentationLayer --> BusinessLogicLayer : Facade Pattern
 BusinessLogicLayer --> PersistenceLayer : CRUD Operations
 
+```
 Explanatory Notes:
 
 PresentationLayer exposes services through API endpoints and uses a facade to communicate with the Business Logic Layer.
@@ -125,7 +126,7 @@ User "1" --> "0..*" Review : writes
 Place "1" --> "0..*" Review : receives
 Place "0..*" -- "0..*" Amenity : has
 
-
+```
 Explanatory Notes:
 
 User: Represents application users; manages registration, login, and profile updates.
