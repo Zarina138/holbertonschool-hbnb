@@ -141,12 +141,16 @@ Place "1" --> "0..*" Review : receives
 Place "0..*" -- "0..*" Amenity : has
 
 ```
+-------------------------------------------
+BaseModel - All models use this.
 
-BaseModel - All models use this
 User - Represents a user, a user can create places and write reviews.
+
 Place - Represents a place listed by a user, belongs to one user, can have many reviews, and many amenities.
-Amenity - Represents a feature of a place
---------------------------------------
+
+Amenity - Represents a feature of a place.
+
+------------------------------------------
 
 Sequence Diagrams
 
