@@ -72,25 +72,34 @@ The Business Logic Layer encapsulates the main entities of the application and t
 ```mermaid
 classDiagram
 
+class BaseModel {
+  +UUID4 id
+  +datetime created_at
+  +datetime updated_at
+  +save()
+  +update()
+  +delete()
+}
+
 class User {
-  +UUID id
+  +UUID4 id
   +string email
   +string password
   +string first_name
   +string last_name
   +datetime created_at
   +datetime updated_at
-  +register()
-  +login()
+  +create_user()
   +update_profile()
+  +delete_user()
 }
 
 class Place {
-  +UUID id
+  +UUID4 id
   +string name
   +string description
   +float price_per_night
-  +UUID owner_id
+  +UUID4 owner_id
   +datetime created_at
   +datetime updated_at
   +create_place()
@@ -99,11 +108,11 @@ class Place {
 }
 
 class Review {
-  +UUID id
+  +UUID4 id
   +string comment
   +int rating
-  +UUID user_id
-  +UUID place_id
+  +UUID4 user_id
+  +UUID4 place_id
   +datetime created_at
   +datetime updated_at
   +create_review()
@@ -112,14 +121,19 @@ class Review {
 }
 
 class Amenity {
-  +UUID id
+  +UUID4 id
   +string name
   +datetime created_at
   +datetime updated_at
-  +add_amenity()
+  +create_amenity()
   +update_amenity()
   +delete_amenity()
 }
+
+BaseModel <|-- User
+BaseModel <|-- Place
+BaseModel <|-- Review
+BaseModel <|-- Amenity
 
 User "1" --> "0..*" Place : owns
 User "1" --> "0..*" Review : writes
@@ -127,14 +141,11 @@ Place "1" --> "0..*" Review : receives
 Place "0..*" -- "0..*" Amenity : has
 
 ```
-Explanatory Notes:
 
-User: Represents application users; manages registration, login, and profile updates.
-Place: Represents properties listed by users; supports create, update, and delete operations.
-Review: Represents user reviews for places; linked to both User and Place.
-Amenity: Represents facilities available at places; managed independently.
-Relationships show ownership, reviews, and amenities linking between entities.
-
+BaseModel - All models use this
+User - Represents a user, a user can create places and write reviews.
+Place - Represents a place listed by a user, belongs to one user, can have many reviews, and many amenities.
+Amenity - Represents a feature of a place
 --------------------------------------
 
 Sequence Diagrams
