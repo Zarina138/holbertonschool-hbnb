@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const reviewForm = document.getElementById('review-form');
-  
-    // -------- Helper functions --------
+
     function getCookie(name) {
       const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
       if (match) return match[2];
@@ -13,8 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       return params.get('placeId');
     }
-  
-    // -------- TASK1: Login --------
+
     if (loginForm) {
       loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -40,8 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
-  
-    // -------- TASK2: Index page --------
+
     const loginLink = document.getElementById('login-link');
     const placesList = document.getElementById('places-list');
     const priceFilter = document.getElementById('price-filter');
@@ -93,8 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     fetchPlaces();
-  
-    // -------- TASK3: Place details --------
+
     const placeDetails = document.getElementById('place-details');
     const addReviewSection = document.getElementById('add-review');
     const placeId = getPlaceIdFromURL();
@@ -135,8 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     fetchPlaceDetails();
-  
-    // -------- TASK4: Add review --------
+
     if (reviewForm) {
       if (!token) window.location.href = 'index.html';
       reviewForm.addEventListener('submit', async (e) => {
